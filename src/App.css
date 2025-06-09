@@ -40,3 +40,51 @@
 .read-the-docs {
   color: #888;
 }
+
+.app {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.main-content {
+  padding-top: 56px;
+  padding-bottom: 60px;
+  min-height: 100vh;
+}
+
+.welcome-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 1rem 0 1.5rem;
+}
+
+.quick-action-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.quick-action-card:active {
+  transform: scale(0.98);
+}
+
+.quick-action-card i {
+  font-size: 2rem;
+  color: #0d6efd;
+  margin-bottom: 0.5rem;
+}
+
+.quick-action-card span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #2c3e50;
+}

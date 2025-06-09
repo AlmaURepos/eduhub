@@ -1,35 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import './App.css';
+import Header from './components/Header/Header';
+import BottomNav from './components/BottomNav/BottomNav';
+import SideMenu from './components/SideMenu/SideMenu';
+import Schedule from './pages/Schedule/Schedule';
 
+// Компонент домашней страницы
+const Home = () => {
+  const navigate = useNavigate();
+  
+  return (
+    <div className="container-fluid">
+      <h2 className="welcome-text">Добро пожаловать в EduHub</h2>
+      <div className="quick-actions">
+        <div className="row g-3">
+          <div className="col-6">
+            <div className="quick-action-card" onClick={() => navigate('/schedule')}>
+              <i className="bi bi-calendar-event"></i>
+              <span>Расписание</span>
+            </div>
+          </div>
+          <div className="col-6">
+            <div className="quick-action-card">
+              <i className="bi bi-journal-text"></i>
+              <span>Силлабус</span>
+            </div>
+          </div>
+          <div className="col-6">
+            <div className="quick-action-card">
+              <i className="bi bi-chat-dots"></i>
+              <span>Чат</span>
+            </div>
+          </div>
+          <div className="col-6">
+            <div className="quick-action-card">
+              <i className="bi bi-calculator"></i>
+              <span>GPA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Основной компонент приложения
 function App() {
-  const [count, setCount] = useState(0)
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+
+  const handleToggleSideMenu = () => {
+    setIsSideMenuOpen(!isSideMenuOpen);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="app">
+        <Header onMenuClick={handleToggleSideMenu} />
+        <SideMenu 
+          isOpen={isSideMenuOpen} 
+          onClose={() => setIsSideMenuOpen(false)}
+        />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/schedule" element={<Schedule />} />
+          </Routes>
+        </main>
+        <BottomNav />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;

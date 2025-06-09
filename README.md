@@ -15,3 +15,4 @@ If you are developing a production application, we recommend using TypeScript wi
 1. npm create vite@latest . -- --template react-ts
 2. npm install
 3. npm run dev
+4. npm install react-router-dom --save
