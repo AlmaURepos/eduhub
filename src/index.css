@@ -71,3 +71,26 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
 }
+
+
+.rbc-row  > .rbc-date-cell{
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  text-align: center;
+  padding: 0.5rem;
+  margin: 0 0.25rem;
+}
+
+.rbc-date-cell.rbc-now {
+  background-color: #0d6efd !important;
+  color: white !important;
+}
+
+.rbc-date-cell.rbc-off-range-bg {
+  background-color: #17a2b8 !important;
+  color: white !important;
+}

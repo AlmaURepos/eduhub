@@ -23,3 +23,4 @@ If you are developing a production application, we recommend using TypeScript wi
 9. firebase login
 9. firebase init
 10. firebase deploy
+11. npm install react-big-calendar moment 
