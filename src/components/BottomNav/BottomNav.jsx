@@ -5,37 +5,33 @@ const BottomNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const navItems = [
+    { path: '/', label: 'Главная', icon: 'house-door' },
+    { path: '/edu', label: 'EDU', icon: 'book' },
+    { path: '/profile', label: 'Профиль', icon: 'person' }
+  ];
+
   return (
-    <nav className="navbar navbar-light bg-white fixed-bottom border-top">
-      <div className="container-fluid p-0">
+    <nav className="navbar navbar-light bg-white fixed-bottom border-top shadow-sm">
+      <div className="container-fluid px-0">
         <div className="row g-0 w-100">
-          <div className="col-4">
-            <button 
-              className={`btn w-100 d-flex flex-column align-items-center py-2 ${
-                location.pathname === '/' ? 'text-primary' : 'text-secondary'
-              }`}
-              onClick={() => navigate('/')}
-            >
-              <i className="bi bi-house-door fs-4"></i>
-              <small>Главная</small>
-            </button>
-          </div>
-          <div className="col-4">
-            <button className="btn w-100 d-flex flex-column align-items-center py-2 text-secondary">
-              <i className="bi bi-book fs-4"></i>
-              <small>EDU</small>
-            </button>
-          </div>
-          <div className="col-4">
-            <button className="btn w-100 d-flex flex-column align-items-center py-2 text-secondary">
-              <i className="bi bi-person fs-4"></i>
-              <small>Профиль</small>
-            </button>
-          </div>
+          {navItems.map(({ path, label, icon }) => (
+            <div className="col text-center" key={path}>
+              <button
+                className={`btn w-100 d-flex flex-column align-items-center py-2 ${
+                  location.pathname === path ? 'text-primary' : 'text-secondary'
+                }`}
+                onClick={() => navigate(path)}
+              >
+                <i className={`bi bi-${icon} fs-4`}></i>
+                <small>{label}</small>
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </nav>
   );
 };
 
-export default BottomNav; 
+export default BottomNav;

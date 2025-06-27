@@ -22,11 +22,35 @@ a:hover {
   color: #535bf2;
 }
 
+html,
 body {
   margin: 0;
   padding: 0;
+  width: 100%;
   min-height: 100vh;
   background-color: #f8f9fa;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Гарантируем, что Bootstrap-контейнеры занимают всю ширину */
+.container,
+.container-fluid {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 h1 {
@@ -66,14 +90,7 @@ button:focus-visible {
   }
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.rbc-row  > .rbc-date-cell{
+.rbc-row > .rbc-date-cell {
   display: flex;
   flex: 1;
   align-items: center;

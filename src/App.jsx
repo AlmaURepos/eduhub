@@ -6,6 +6,12 @@ import BottomNav from './components/BottomNav/BottomNav';
 import SideMenu from './components/SideMenu/SideMenu';
 import MyCalendar from './components/Calendar/Calendar';
 import Schedule from './pages/Schedule/Schedule';
+import Gpa from './pages/Gpa/Gpa';
+import Grades from './pages/Grades/Grades';
+import Testing from './pages/Testing/Testing';
+import Events from './pages/Events/Events';
+import EventDetail from './pages/Events/EventDetail';
+import Profile from './pages/Profile/Profile';
 
 // Компонент домашней страницы
 const Home = () => {
@@ -16,7 +22,7 @@ const Home = () => {
   
   return (
     <div className="container-fluid">
-      <h2 className="welcome-text">Добро пожаловать в EduHub</h2>
+      <h2 className="welcome-text"></h2>
       <div className="quick-actions">
         <div className="row g-3">
           <div className="col-12">
@@ -33,9 +39,21 @@ const Home = () => {
             </div>
           </div>
           <div className="col-6">
-            <div className="quick-action-card">
-              <i className="bi bi-journal-text"></i>
-              <span>Силлабус</span>
+            <div className="quick-action-card" onClick={() => navigate('/grades')}>
+              <i className="bi bi-graph-up"></i>
+              <span>Оценки</span>
+            </div>
+          </div>
+          <div className="col-6">
+            <div className="quick-action-card" onClick={() => navigate('/testing')}>
+              <i className="bi bi-patch-question"></i>
+              <span>Тестирование</span>
+            </div>
+          </div>
+          <div className="col-6">
+            <div className="quick-action-card" onClick={() => navigate('/events')}>
+              <i className="bi bi-calendar-event"></i>
+              <span>События</span>
             </div>
           </div>
           <div className="col-6">
@@ -45,7 +63,7 @@ const Home = () => {
             </div>
           </div>
           <div className="col-6">
-            <div className="quick-action-card">
+            <div className="quick-action-card " onClick={() => navigate('/gpa')}>
               <i className="bi bi-calculator"></i>
               <span>GPA</span>
             </div>
@@ -91,6 +109,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/schedule" element={<Schedule />} />
+            <Route path="/gpa" element={<Gpa />} />
+            <Route path="/grades" element={<Grades />} />
+            <Route path="/testing" element={<Testing />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/events/:id" element={<EventDetail />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>
         <BottomNav />
