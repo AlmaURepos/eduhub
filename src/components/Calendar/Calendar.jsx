@@ -23,7 +23,7 @@ const ScrollDays = ({ events = [], setSelectedDate, setShowModal, setSelectedEve
   useEffect(() => {
     const loadSchedule = async () => {
       try {
-        const weekEvents = await getSchedule();
+        const weekEvents = await getScheduleForFullCalendar();
         
         const allEvents = [];
         for (let weekOffset = -2; weekOffset <= 4; weekOffset++) {

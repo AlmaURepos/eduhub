@@ -12,6 +12,7 @@ const getUserIp = async () => {
   }
 };
 
+// Получаем предметы только из расписания
 export const getAllSubjects = async () => {
   const ip = await getUserIp();
   
@@ -30,8 +31,8 @@ export const getAllSubjects = async () => {
     
     const subjects = [];
     scheduleData.forEach(item => {
-      if (item.subject && !subjects.includes(item.subject)) {
-        subjects.push(item.subject);
+      if (item.C && !subjects.includes(item.C)) { // item.C - предмет из Excel
+        subjects.push(item.C);
       }
     });
     
@@ -42,15 +43,14 @@ export const getAllSubjects = async () => {
   }
 };
 
+// Структура: 3 года × 3 семестра = 9 семестров
 export const getCoursesStructure = () => {
-  const currentYear = new Date().getFullYear();
   const courses = [];
   
-  for (let year = 0; year < 3; year++) {
-    const courseYear = currentYear + year;
+  for (let year = 1; year <= 3; year++) {
     const course = {
-      year: courseYear,
-      name: `${year + 1} курс`,
+      year: year,
+      name: `${year} курс`,
       semesters: []
     };
     
@@ -68,6 +68,7 @@ export const getCoursesStructure = () => {
   return courses;
 };
 
+// Распределяем предметы по 9 семестрам
 export const distributeSubjectsToCourses = (subjects) => {
   const courses = getCoursesStructure();
   const shuffledSubjects = [...subjects].sort(() => Math.random() - 0.5);
@@ -76,7 +77,8 @@ export const distributeSubjectsToCourses = (subjects) => {
   
   courses.forEach(course => {
     course.semesters.forEach(semester => {
-      const subjectsPerSemester = Math.floor(Math.random() * 4) + 2;
+      // 2-4 предмета на семестр
+      const subjectsPerSemester = Math.floor(Math.random() * 3) + 2;
       
       for (let i = 0; i < subjectsPerSemester && subjectIndex < shuffledSubjects.length; i++) {
         semester.subjects.push(shuffledSubjects[subjectIndex]);
@@ -86,6 +88,46 @@ export const distributeSubjectsToCourses = (subjects) => {
   });
   
   return courses;
+};
+
+// Случайные оценки для предмета
+export const generateGradesForSubject = (subject) => {
+  return {
+    subject: subject,
+    current1: [
+      Math.floor(Math.random() * 20) + 70,
+      Math.floor(Math.random() * 20) + 70,
+      Math.floor(Math.random() * 20) + 70,
+      Math.floor(Math.random() * 20) + 70,
+      Math.floor(Math.random() * 20) + 70
+    ],
+    current2: [
+      Math.floor(Math.random() * 20) + 70,
+      Math.floor(Math.random() * 20) + 70,
+      Math.floor(Math.random() * 20) + 70,
+      Math.floor(Math.random() * 20) + 70,
+      Math.floor(Math.random() * 20) + 70
+    ],
+    rk1: Math.floor(Math.random() * 30) + 70,
+    rk2: Math.floor(Math.random() * 30) + 70,
+    exam: Math.floor(Math.random() * 30) + 70
+  };
+};
+
+// Получаем все данные
+export const getAllGradesWithStructure = async () => {
+  const subjects = await getAllSubjects();
+  const coursesStructure = distributeSubjectsToCourses(subjects);
+  
+  const allGrades = {};
+  subjects.forEach(subject => {
+    allGrades[subject] = generateGradesForSubject(subject);
+  });
+  
+  return {
+    courses: coursesStructure,
+    grades: allGrades
+  };
 };
 
 export const percentToGpa = (percent) => {
@@ -122,28 +164,8 @@ export const calculateGpa = (percent) => {
 
 export const generateMockGrades = (subjects) => {
   const mockGrades = {};
-  
   subjects.forEach(subject => {
-    mockGrades[subject] = {
-      current1: [
-        Math.floor(Math.random() * 20) + 70,
-        Math.floor(Math.random() * 20) + 70,
-        Math.floor(Math.random() * 20) + 70,
-        Math.floor(Math.random() * 20) + 70,
-        Math.floor(Math.random() * 20) + 70
-      ],
-      current2: [
-        Math.floor(Math.random() * 20) + 70,
-        Math.floor(Math.random() * 20) + 70,
-        Math.floor(Math.random() * 20) + 70,
-        Math.floor(Math.random() * 20) + 70,
-        Math.floor(Math.random() * 20) + 70
-      ],
-      rk1: Math.floor(Math.random() * 30) + 70,
-      rk2: Math.floor(Math.random() * 30) + 70,
-      exam: Math.floor(Math.random() * 30) + 70
-    };
+    mockGrades[subject] = generateGradesForSubject(subject);
   });
-  
   return mockGrades;
 }; 

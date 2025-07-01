@@ -171,62 +171,19 @@ const EventDetail = () => {
         </div>
 
         <div className="col-lg-4">
-          <div className="card border-0 shadow-sm">
-            <div className="card-header bg-primary bg-opacity-10 border-0">
-              <h5 className="mb-0">Действия</h5>
-            </div>
-            <div className="card-body">
-              {event.registrationRequired ? (
-                <button
-                  className="btn btn-primary w-100 mb-3"
-                  onClick={() => setShowRegistration(true)}
-                  disabled={event.currentParticipants >= event.maxParticipants}
-                >
-                  <i className="bi bi-person-plus me-1"></i>
-                  {event.currentParticipants >= event.maxParticipants ? 'Мест нет' : 'Зарегистрироваться'}
-                </button>
-              ) : (
-                <button className="btn btn-outline-primary w-100 mb-3">
-                  <i className="bi bi-calendar-plus me-1"></i>
-                  Добавить в календарь
-                </button>
-              )}
-
-              <button className="btn btn-outline-secondary w-100 mb-3">
-                <i className="bi bi-share me-1"></i>
-                Поделиться
-              </button>
-
-              <button className="btn btn-outline-info w-100">
-                <i className="bi bi-download me-1"></i>
-                Скачать информацию
+          {/* Только кнопка регистрации, если требуется */}
+          {event.registrationRequired && (
+            <div className="mb-4">
+              <button
+                className="btn btn-primary w-100"
+                onClick={() => setShowRegistration(true)}
+                disabled={event.currentParticipants >= event.maxParticipants}
+              >
+                <i className="bi bi-person-plus me-1"></i>
+                {event.currentParticipants >= event.maxParticipants ? 'Мест нет' : 'Зарегистрироваться'}
               </button>
             </div>
-          </div>
-
-          <div className="card border-0 shadow-sm mt-3">
-            <div className="card-header bg-info bg-opacity-10 border-0">
-              <h6 className="mb-0">Похожие события</h6>
-            </div>
-            <div className="card-body">
-              <div className="list-group list-group-flush">
-                <a href="#" className="list-group-item list-group-item-action border-0 px-0">
-                  <div className="d-flex w-100 justify-content-between">
-                    <h6 className="mb-1">День науки</h6>
-                    <small className="text-muted">15 марта</small>
-                  </div>
-                  <p className="mb-1 small text-muted">Научная конференция</p>
-                </a>
-                <a href="#" className="list-group-item list-group-item-action border-0 px-0">
-                  <div className="d-flex w-100 justify-content-between">
-                    <h6 className="mb-1">Студенческая весна</h6>
-                    <small className="text-muted">20 апреля</small>
-                  </div>
-                  <p className="mb-1 small text-muted">Культурное мероприятие</p>
-                </a>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
 

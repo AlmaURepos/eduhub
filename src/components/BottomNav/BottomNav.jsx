@@ -7,12 +7,13 @@ const BottomNav = () => {
 
   const navItems = [
     { path: '/', label: 'Главная', icon: 'house-door' },
-    { path: '/edu', label: 'EDU', icon: 'book' },
+    { path: '/schedule', label: 'Расписание', icon: 'calendar-event' },
+    { path: '/events', label: 'События', icon: 'calendar-event' },
     { path: '/profile', label: 'Профиль', icon: 'person' }
   ];
 
   return (
-    <nav className="navbar navbar-light bg-white fixed-bottom border-top shadow-sm">
+    <nav className="navbar navbar-light fixed-bottom border-top shadow-sm">
       <div className="container-fluid px-0">
         <div className="row g-0 w-100">
           {navItems.map(({ path, label, icon }) => (

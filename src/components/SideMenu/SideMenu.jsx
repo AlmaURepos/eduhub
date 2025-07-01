@@ -1,12 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getCurrentTheme, toggleTheme, themes } from '../../utils/themeUtils';
 
 const SideMenu = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
+  const [currentTheme, setCurrentTheme] = React.useState(getCurrentTheme());
 
   const handleNavigation = (path) => {
     navigate(path);
     onClose();
+  };
+
+  const handleThemeToggle = () => {
+    const newTheme = toggleTheme();
+    setCurrentTheme(newTheme);
   };
 
   return (
@@ -79,6 +86,23 @@ const SideMenu = ({ isOpen, onClose }) => {
             >
               <i className="bi bi-person-circle me-3 fs-5 text-primary"></i>
               <span>Мой профиль</span>
+            </button>
+            
+            {/* Разделитель */}
+            <div className="border-top my-2"></div>
+            
+            {/* Переключатель темы */}
+            <button
+              className="list-group-item list-group-item-action py-3 d-flex align-items-center justify-content-between"
+              onClick={handleThemeToggle}
+            >
+              <div className="d-flex align-items-center">
+                <i className={`bi ${currentTheme === 'light' ? 'bi-moon' : 'bi-sun'} me-3 fs-5 text-primary`}></i>
+                <span>Тема</span>
+              </div>
+              <span className="badge bg-primary rounded-pill">
+                {currentTheme === 'light' ? themes.dark.label : themes.light.label}
+              </span>
             </button>
           </div>
         </div>

@@ -1,18 +1,19 @@
 import React from 'react';
 import { calculateAverage, calculateRating, calculateFinal, calculateGpa } from '../../utils/gradesUtils';
 
-const GradeCard = ({ subject, grades }) => {
-  const avgCurrent1 = calculateAverage(grades.current1);
-  const avgCurrent2 = calculateAverage(grades.current2);
-  const rating = calculateRating(grades.rk1, grades.rk2, avgCurrent1, avgCurrent2);
-  const final = calculateFinal(grades.exam, rating);
+const GradeCard = ({ grade }) => {
+  const { subject, current1, current2, rk1, rk2, exam } = grade;
+  const avgCurrent1 = calculateAverage(current1);
+  const avgCurrent2 = calculateAverage(current2);
+  const rating = calculateRating(rk1, rk2, avgCurrent1, avgCurrent2);
+  const final = calculateFinal(exam, rating);
 
   const gpaCurrent1 = calculateGpa(avgCurrent1);
   const gpaCurrent2 = calculateGpa(avgCurrent2);
-  const gpaRk1 = calculateGpa(grades.rk1);
-  const gpaRk2 = calculateGpa(grades.rk2);
+  const gpaRk1 = calculateGpa(rk1);
+  const gpaRk2 = calculateGpa(rk2);
   const gpaRating = calculateGpa(rating);
-  const gpaExam = calculateGpa(grades.exam);
+  const gpaExam = calculateGpa(exam);
   const gpaFinal = calculateGpa(final);
 
   const getScoreColor = (gpa) => {
@@ -30,11 +31,11 @@ const GradeCard = ({ subject, grades }) => {
   };
 
   return (
-    <div className="card border-0 shadow-sm mb-3">
+    <div className="card border-0 shadow-sm mb-3 grade-card">
       <div className="card-header bg-primary bg-opacity-10 border-0">
         <div className="d-flex align-items-center">
           <i className="bi bi-book text-primary me-2"></i>
-          <h6 className="card-title mb-0 fw-bold text-dark">{subject}</h6>
+          <h6 className="card-title mb-0 fw-bold">{subject}</h6>
         </div>
       </div>
       <div className="card-body p-0">
@@ -63,7 +64,7 @@ const GradeCard = ({ subject, grades }) => {
           <div className="col-6 border-end">
             <div className="p-3">
               <div className="small text-muted mb-1">РК1</div>
-              <div className="h5 mb-0 fw-bold text-muted">{grades.rk1}%</div>
+              <div className="h5 mb-0 fw-bold text-muted">{rk1}%</div>
               <div className={`h6 mb-0 fw-bold ${getScoreColor(gpaRk1)}`}>
                 GPA: {gpaRk1.toFixed(2)}
               </div>
@@ -72,7 +73,7 @@ const GradeCard = ({ subject, grades }) => {
           <div className="col-6">
             <div className="p-3">
               <div className="small text-muted mb-1">РК2</div>
-              <div className="h5 mb-0 fw-bold text-muted">{grades.rk2}%</div>
+              <div className="h5 mb-0 fw-bold text-muted">{rk2}%</div>
               <div className={`h6 mb-0 fw-bold ${getScoreColor(gpaRk2)}`}>
                 GPA: {gpaRk2.toFixed(2)}
               </div>
@@ -93,7 +94,7 @@ const GradeCard = ({ subject, grades }) => {
           <div className="col-6">
             <div className="p-3">
               <div className="small text-muted mb-1">Экзамен</div>
-              <div className="h5 mb-0 fw-bold text-muted">{grades.exam}%</div>
+              <div className="h5 mb-0 fw-bold text-muted">{exam}%</div>
               <div className={`h6 mb-0 fw-bold ${getScoreColor(gpaExam)}`}>
                 GPA: {gpaExam.toFixed(2)}
               </div>

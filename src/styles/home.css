@@ -1,0 +1,64 @@
+/* Стили для главной страницы */
+
+/* Светлая тема */
+.home-page {
+  background-color: #ffffff;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+/* Темная тема */
+[data-bs-theme="dark"] .home-page {
+  background-color: #212529;
+  transition: background-color 0.3s ease;
+}
+
+/* Стили для карточек на главной странице */
+[data-bs-theme="light"] .home-card {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+}
+
+[data-bs-theme="dark"] .home-card {
+  background-color: #343a40;
+  border: 1px solid #495057;
+  transition: all 0.3s ease;
+}
+
+[data-bs-theme="dark"] .home-card .card-body {
+  color: #ffffff;
+}
+
+/* Эффект при наведении на карточки */
+.home-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Стили для календаря на главной странице */
+[data-bs-theme="light"] .home-calendar {
+  background-color: #ffffff;
+}
+
+[data-bs-theme="dark"] .home-calendar {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+[data-bs-theme="dark"] .home-calendar .rbc-header {
+  background-color: #495057;
+  color: #ffffff;
+}
+
+[data-bs-theme="dark"] .home-calendar .rbc-date-cell {
+  color: #ffffff;
+}
+
+[data-bs-theme="dark"] .home-calendar .rbc-off-range-bg {
+  background-color: #495057;
+}
+
+[data-bs-theme="dark"] .home-calendar .rbc-today {
+  background-color: #0d6efd;
+} 

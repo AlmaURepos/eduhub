@@ -1,7 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { calculateTestScore, formatTime } from '../../utils/testingUtils';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getTestById, calculateTestScore, formatTime } from '../../utils/testingUtils';
 
-const TestInterface = ({ test, onFinish }) => {
+const TestInterface = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const test = getTestById(id);
+
+  // Если тест не найден
+  if (!test) {
+    return (
+      <div className="container py-5 text-center">
+        <h2>Тест не найден</h2>
+        <button className="btn btn-primary mt-3" onClick={() => navigate('/testing')}>
+          Вернуться к списку тестов
+        </button>
+      </div>
+    );
+  }
+
+  // --- Оригинальная логика теста ниже ---
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [timeLeft, setTimeLeft] = useState(test.timeLimit);
@@ -114,7 +132,7 @@ const TestInterface = ({ test, onFinish }) => {
         </div>
 
         <div className="text-center">
-          <button className="btn btn-primary" onClick={onFinish}>
+          <button className="btn btn-primary" onClick={() => navigate('/testing')}>
             Вернуться к тестам
           </button>
         </div>
@@ -200,8 +218,7 @@ const TestInterface = ({ test, onFinish }) => {
                 onClick={finishTest}
                 disabled={!isAnswered}
               >
-                Завершить тест
-                <i className="bi bi-check ms-1"></i>
+                Завершить
               </button>
             ) : (
               <button
@@ -209,8 +226,7 @@ const TestInterface = ({ test, onFinish }) => {
                 onClick={nextQuestion}
                 disabled={!isAnswered}
               >
-                Далее
-                <i className="bi bi-chevron-right ms-1"></i>
+                Далее <i className="bi bi-chevron-right ms-1"></i>
               </button>
             )}
           </div>

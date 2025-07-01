@@ -64,30 +64,46 @@ export const getSchedule = async () => {
     const docData = querySnapshot.docs[0].data();
     const scheduleData = docData.schedule;
     
+    // Проверяем, что scheduleData существует и является массивом
+    if (!scheduleData || !Array.isArray(scheduleData)) {
+      console.warn('Данные расписания отсутствуют или имеют неправильный формат:', scheduleData);
+      return [];
+    }
+    
     const today = moment();
     const startOfWeek = today.clone().startOf('week').add(1, 'day');
 
     const formattedEvents = scheduleData.map((item, index) => {
-      const dayIndex = dayMap[item.day.toLowerCase()];
+      // Проверяем, что item существует
+      if (!item) {
+        return null;
+      }
       
+      // Работаем только с Excel форматом (A, B, C, D, E)
+      const day = item.A || '';
+      const time = item.B || '';
+      const subject = item.C || '';
+      const teacher = item.D || '';
+      const room = item.E || '';
+      
+      // Проверяем, что есть хотя бы день и предмет
+      if (!day || !subject) {
+        return null;
+      }
+      
+      // Проверяем, что день недели известен
+      const dayIndex = dayMap[day.toLowerCase()];
       if (dayIndex === undefined) {
         return null; 
       }
-      
-      const eventDate = startOfWeek.clone().add(dayIndex, 'days');
-      const [startTime, endTime] = item.time.split('-');
-      const start = moment(`${eventDate.format('YYYY-MM-DD')} ${startTime.replace('.', ':')}`, 'YYYY-MM-DD HH:mm').toDate();
-      const end = moment(`${eventDate.format('YYYY-MM-DD')} ${endTime.replace('.', ':')}`, 'YYYY-MM-DD HH:mm').toDate();
 
       return {
         id: index,
-        title: item.subject,
-        day: item.day,
-        room: item.room,
-        teacher: item.teacher,
-        time: item.time,
-        start,
-        end,
+        title: subject,
+        day: day,
+        room: room || 'Не указана',
+        teacher: teacher || 'Не указан',
+        time: time || 'Не указано',
       };
     }).filter(event => event !== null);
 
@@ -114,6 +130,12 @@ export const getScheduleForFullCalendar = async () => {
     const docData = querySnapshot.docs[0].data();
     const scheduleData = docData.schedule;
     
+    // Проверяем, что scheduleData существует и является массивом
+    if (!scheduleData || !Array.isArray(scheduleData)) {
+      console.warn('Данные расписания отсутствуют или имеют неправильный формат:', scheduleData);
+      return [];
+    }
+    
     const today = moment();
     const startOfWeek = today.clone().startOf('week');
 
@@ -128,24 +150,42 @@ export const getScheduleForFullCalendar = async () => {
     };
 
     const formattedEvents = scheduleData.map((item, index) => {
-      const dayIndex = dayMapForFullCalendar[item.day.toLowerCase()];
+      // Проверяем, что item существует
+      if (!item) {
+        return null;
+      }
       
+      // Работаем только с Excel форматом (A, B, C, D, E)
+      const day = item.A || '';
+      const time = item.B || '';
+      const subject = item.C || '';
+      const teacher = item.D || '';
+      const room = item.E || '';
+      
+      // Проверяем, что есть хотя бы день и предмет
+      if (!day || !subject) {
+        return null;
+      }
+      
+      // Проверяем, что день недели известен
+      const dayIndex = dayMapForFullCalendar[day.toLowerCase()];
       if (dayIndex === undefined) {
         return null; 
       }
       
+      // Создаем даты для календаря
       const eventDate = startOfWeek.clone().add(dayIndex, 'days');
-      const [startTime, endTime] = item.time.split('-');
+      const [startTime, endTime] = time.split('-');
       const start = moment(`${eventDate.format('YYYY-MM-DD')} ${startTime.replace('.', ':')}`, 'YYYY-MM-DD HH:mm').toDate();
       const end = moment(`${eventDate.format('YYYY-MM-DD')} ${endTime.replace('.', ':')}`, 'YYYY-MM-DD HH:mm').toDate();
 
       return {
         id: index,
-        title: item.subject,
-        day: item.day,
-        room: item.room,
-        teacher: item.teacher,
-        time: item.time,
+        title: subject,
+        day: day,
+        room: room || 'Не указана',
+        teacher: teacher || 'Не указан',
+        time: time || 'Не указано',
         start,
         end,
       };

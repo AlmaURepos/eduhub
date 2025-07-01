@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Overlay, Popover, Button } from 'react-bootstrap';
+import { getCurrentTheme, toggleTheme, themes } from '../../utils/themeUtils';
 
 const Header = ({ onMenuClick }) => {
   const [showNotifications, setShowNotifications] = useState(false);
@@ -9,10 +10,16 @@ const Header = ({ onMenuClick }) => {
     '💬 Преподаватель добавил комментарий в чат'
   ]);
   const bellRef = useRef(null);
+  const [currentTheme, setCurrentTheme] = useState(getCurrentTheme());
 
   const toggleNotifications = () => setShowNotifications(!showNotifications);
 
   const handleClearNotifications = () => setNotifications([]);
+
+  const handleThemeToggle = () => {
+    const newTheme = toggleTheme();
+    setCurrentTheme(newTheme);
+  };
 
   return (
     <>
@@ -38,6 +45,30 @@ const Header = ({ onMenuClick }) => {
               </span>
             )}
           </button>
+          <button
+            className="theme-toggle me-2"
+            onClick={handleThemeToggle}
+            title={`Переключить на ${currentTheme === 'light' ? themes.dark.label : themes.light.label} тему`}
+          >
+            <i className={`bi ${currentTheme === 'light' ? themes.dark.icon : themes.light.icon}`}></i>
+          </button>
+          <div className="dropdown">
+            <button
+              className="btn btn-outline-secondary btn-sm dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i className="bi bi-person-circle me-1"></i>
+              Профиль
+            </button>
+            <ul className="dropdown-menu">
+              <li><a className="dropdown-item" href="/profile">Мой профиль</a></li>
+              <li><a className="dropdown-item" href="/settings">Настройки</a></li>
+              <li><hr className="dropdown-divider" /></li>
+              <li><a className="dropdown-item" href="/logout">Выйти</a></li>
+            </ul>
+          </div>
         </div>
       </nav>
 

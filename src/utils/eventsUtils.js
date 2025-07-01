@@ -1,20 +1,5 @@
 export const universityEvents = [
   {
-    id: 1,
-    title: "День открытых дверей 2025",
-    category: "academic",
-    image: "https://images.unsplash.com/photo-1523240794102-9c5f2a0b0b1a?w=400&h=250&fit=crop",
-    shortDescription: "Приглашаем абитуриентов и их родителей на день открытых дверей",
-    fullDescription: "Университет проводит традиционный день открытых дверей для будущих студентов. В программе: презентация факультетов, встреча с преподавателями, экскурсия по кампусу, мастер-классы и консультации по поступлению.",
-    date: "2025-02-15",
-    time: "10:00",
-    location: "Главный корпус университета",
-    maxParticipants: 200,
-    currentParticipants: 45,
-    registrationRequired: true,
-    tags: ["абитуриенты", "поступление", "презентация"]
-  },
-  {
     id: 2,
     title: "Научная конференция по ИИ",
     category: "research",
