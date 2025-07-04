@@ -1,16 +1,26 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Overlay, Popover, Button } from 'react-bootstrap';
 import { getCurrentTheme, toggleTheme, themes } from '../../utils/themeUtils';
+import { loadProfile } from '../../utils/profileUtils';
+import '../../styles/header.css';
 
 const Header = ({ onMenuClick }) => {
+  const navigate = useNavigate();
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState([
     '📅 У вас пара в 10:00 в 2А-305',
     '📝 Новый силлабус добавлен в раздел EDU',
     '💬 Преподаватель добавил комментарий в чат'
   ]);
+  const [profile, setProfile] = useState(null);
   const bellRef = useRef(null);
   const [currentTheme, setCurrentTheme] = useState(getCurrentTheme());
+
+  useEffect(() => {
+    const userProfile = loadProfile();
+    setProfile(userProfile);
+  }, []);
 
   const toggleNotifications = () => setShowNotifications(!showNotifications);
 
@@ -23,7 +33,7 @@ const Header = ({ onMenuClick }) => {
 
   return (
     <>
-      <nav className="navbar navbar-light bg-white fixed-top border-bottom shadow-sm">
+      <nav className="navbar navbar-light fixed-top border-bottom shadow-sm header">
         <div className="container-fluid px-3 py-2 d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center gap-3">
             <button className="btn p-0" onClick={onMenuClick} aria-label="Открыть меню">
@@ -52,23 +62,13 @@ const Header = ({ onMenuClick }) => {
           >
             <i className={`bi ${currentTheme === 'light' ? themes.dark.icon : themes.light.icon}`}></i>
           </button>
-          <div className="dropdown">
-            <button
-              className="btn btn-outline-secondary btn-sm dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i className="bi bi-person-circle me-1"></i>
-              Профиль
-            </button>
-            <ul className="dropdown-menu">
-              <li><a className="dropdown-item" href="/profile">Мой профиль</a></li>
-              <li><a className="dropdown-item" href="/settings">Настройки</a></li>
-              <li><hr className="dropdown-divider" /></li>
-              <li><a className="dropdown-item" href="/logout">Выйти</a></li>
-            </ul>
-          </div>
+          <button
+            className="btn btn-outline-primary btn-sm"
+            onClick={() => navigate('/profile')}
+            style={{ cursor: 'pointer' }}
+          >
+            {profile?.firstName || 'Пользователь'}
+          </button>
         </div>
       </nav>
 

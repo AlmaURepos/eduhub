@@ -1,0 +1,77 @@
+/* Стили для нижней навигации */
+
+/* Светлая тема */
+.bottom-nav {
+  background-color: #ffffff !important;
+  border-top: 1px solid #dee2e6 !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.bottom-nav .btn {
+  transition: all 0.3s ease;
+}
+
+.bottom-nav .btn:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.bottom-nav .btn.text-primary {
+  color: #ffffff !important;
+  background-color: #0d6efd !important;
+}
+
+.bottom-nav .btn.text-secondary {
+  color: #6c757d !important;
+}
+
+.bottom-nav .btn.text-primary:hover {
+  background-color: #0b5ed6 !important;
+  color: #ffffff !important;
+}
+
+/* Темная тема */
+[data-bs-theme="dark"] .bottom-nav {
+  background-color: #343a40 !important;
+  border-top: 1px solid #495057 !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+[data-bs-theme="dark"] .bottom-nav .btn {
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .bottom-nav .btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .bottom-nav .btn.text-primary {
+  color: #ffffff !important;
+  background-color: #0d6efd !important;
+}
+
+[data-bs-theme="dark"] .bottom-nav .btn.text-secondary {
+  color: #adb5bd !important;
+}
+
+[data-bs-theme="dark"] .bottom-nav .btn.text-primary:hover {
+  background-color: #0b5ed6 !important;
+  color: #ffffff !important;
+}
+
+/* Анимация при нажатии */
+.bottom-nav .btn:active {
+  transform: scale(0.95);
+}
+
+/* Адаптивность */
+@media (max-width: 576px) {
+  .bottom-nav .btn {
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .bottom-nav .btn small {
+    font-size: 0.75rem;
+  }
+} 

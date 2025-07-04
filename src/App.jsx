@@ -14,6 +14,8 @@ import Events from './pages/Events/Events';
 import EventDetail from './pages/Events/EventDetail';
 import Profile from './pages/Profile/Profile';
 import TestInterface from './components/TestInterface/TestInterface';
+import Syllabus from './pages/Syllabus/Syllabus';
+import RoadmapDetail from './pages/Syllabus/RoadmapDetail';
 
 // Компонент домашней страницы
 const Home = () => {
@@ -70,10 +72,10 @@ const Home = () => {
           </div>
         </div>
         <div className="col-6">
-          <div className="card border-0 shadow-sm h-100 home-card" style={{ cursor: 'pointer' }}>
+          <div className="card border-0 shadow-sm h-100 home-card" style={{ cursor: 'pointer' }} onClick={() => navigate('/syllabus')}>
             <div className="card-body text-center p-3">
-              <i className="bi bi-chat-dots text-secondary fs-2 mb-2 d-block"></i>
-              <span className="fw-medium">Чат</span>
+              <i className="bi bi-file-earmark-text text-info fs-2 mb-2 d-block"></i>
+              <span className="fw-medium">Силлабус</span>
             </div>
           </div>
         </div>
@@ -137,6 +139,8 @@ function App() {
             <Route path="/testing/:id" element={<TestInterface />} />
             <Route path="/events" element={<Events />} />
             <Route path="/events/:id" element={<EventDetail />} />
+            <Route path="/syllabus" element={<Syllabus />} />
+            <Route path="/syllabus/roadmap/:id" element={<RoadmapDetail />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import '../../styles/bottomNav.css';
 
 const BottomNav = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const BottomNav = () => {
   ];
 
   return (
-    <nav className="navbar navbar-light fixed-bottom border-top shadow-sm">
+    <nav className="navbar navbar-light fixed-bottom border-top shadow-sm bottom-nav">
       <div className="container-fluid px-0">
         <div className="row g-0 w-100">
           {navItems.map(({ path, label, icon }) => (

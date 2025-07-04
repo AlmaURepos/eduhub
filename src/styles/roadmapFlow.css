@@ -1,0 +1,181 @@
+/* Стили для roadmap узлов */
+.roadmap-node {
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.roadmap-node:hover {
+  transform: scale(1.02);
+}
+
+.week-badge {
+  background: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: inline-block;
+  min-width: 40px;
+  text-align: center;
+}
+
+.topic-title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.topic-title.completed {
+  color: #28a745;
+  text-decoration: line-through;
+}
+
+.completion-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #28a745;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Стили для React Flow */
+.react-flow__node {
+  cursor: pointer;
+}
+
+.react-flow__node:hover {
+  filter: brightness(1.05);
+}
+
+/* Улучшенные стили для Controls */
+.react-flow__controls {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: white;
+  border: 1px solid #e0e0e0;
+}
+
+.react-flow__controls-button {
+  background: white;
+  border: 1px solid #e0e0e0;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.react-flow__controls-button:hover {
+  background: #f8f9fa;
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.react-flow__controls-button:active {
+  background: #e9ecef;
+}
+
+/* Стили для MiniMap */
+.react-flow__minimap {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  background: white;
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(0, 0, 0, 0.1);
+}
+
+.react-flow__minimap-node {
+  fill: #007bff;
+  stroke: #0056b3;
+  stroke-width: 1;
+}
+
+/* Стили для Background */
+.react-flow__background {
+  background-color: #f8f9fa;
+}
+
+.react-flow__background-pattern {
+  stroke: #e0e0e0;
+  stroke-width: 1;
+}
+
+/* Стили для панели */
+.react-flow__panel {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid #e0e0e0;
+}
+
+/* Улучшенные стили для кнопок управления */
+.react-flow__controls-fitview {
+  background: white;
+  border: 1px solid #e0e0e0;
+  color: #333;
+}
+
+.react-flow__controls-fitview:hover {
+  background: #f8f9fa;
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.react-flow__controls-zoom {
+  background: white;
+  border: 1px solid #e0e0e0;
+  color: #333;
+}
+
+.react-flow__controls-zoom:hover {
+  background: #f8f9fa;
+  border-color: #007bff;
+  color: #007bff;
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+  .react-flow__controls {
+    transform: scale(0.8);
+    transform-origin: top right;
+  }
+  
+  .react-flow__minimap {
+    transform: scale(0.7);
+    transform-origin: bottom right;
+  }
+}
+
+
+
+ 

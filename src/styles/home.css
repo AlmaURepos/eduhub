@@ -61,4 +61,35 @@
 
 [data-bs-theme="dark"] .home-calendar .rbc-today {
   background-color: #0d6efd;
+}
+
+/* Стили для скролл календаря в темной теме */
+[data-bs-theme="dark"] .bg-white {
+  background-color: #343a40 !important;
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .bg-white:hover {
+  background-color: #495057 !important;
+}
+
+/* Стили для карточек дней в скролл календаре */
+[data-bs-theme="dark"] .calendar-day-card {
+  background-color: #343a40 !important;
+  color: #ffffff !important;
+  border: 1px solid #495057 !important;
+}
+
+[data-bs-theme="dark"] .calendar-day-card:hover {
+  background-color: #495057 !important;
+}
+
+[data-bs-theme="dark"] .calendar-day-card.bg-primary {
+  background-color: #0d6efd !important;
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .calendar-day-card.bg-info {
+  background-color: #0dcaf0 !important;
+  color: #ffffff !important;
 } 

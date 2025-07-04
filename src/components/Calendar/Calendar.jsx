@@ -103,7 +103,7 @@ const ScrollDays = ({ events = [], setSelectedDate, setShowModal, setSelectedEve
         {generateWeekDays().map((day, index) => (
           <div
             key={index}
-            className={`flex-fill text-center p-3 mx-1 rounded-3 shadow-sm ${
+            className={`flex-fill text-center p-3 mx-1 rounded-3 shadow-sm calendar-day-card ${
               day.isToday ? 'bg-primary text-white' : day.hasEvents ? 'bg-info text-white' : 'bg-white'
             }`}
             style={{ minWidth: '70px', cursor: 'pointer' }}

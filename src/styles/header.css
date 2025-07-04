@@ -1,0 +1,88 @@
+/* Стили для Header с поддержкой темной темы */
+
+/* Светлая тема */
+.header {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #dee2e6 !important;
+}
+
+.header .navbar-brand {
+  color: #0d6efd !important;
+}
+
+.header .btn-outline-primary {
+  border-color: #0d6efd;
+  color: #0d6efd;
+  transition: all 0.3s ease;
+}
+
+.header .btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.25);
+}
+
+/* Темная тема */
+[data-bs-theme="dark"] .header {
+  background-color: #212529 !important;
+  border-bottom: 1px solid #495057 !important;
+}
+
+[data-bs-theme="dark"] .header .navbar-brand {
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .header .btn-outline-primary {
+  border-color: #0d6efd;
+  color: #ffffff;
+  background-color: #0d6efd;
+}
+
+[data-bs-theme="dark"] .header .btn-outline-primary:hover {
+  background-color: #0b5ed6;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.25);
+}
+
+/* Стили для кнопок в темной теме */
+[data-bs-theme="dark"] .btn {
+  color: #ffffff;
+}
+
+[data-bs-theme="dark"] .btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Стили для уведомлений в темной теме */
+[data-bs-theme="dark"] .popover {
+  background-color: #212529;
+  border-color: #495057;
+}
+
+[data-bs-theme="dark"] .popover-header {
+  background-color: #343a40;
+  color: #ffffff;
+  border-bottom-color: #495057;
+}
+
+[data-bs-theme="dark"] .popover-body {
+  color: #adb5bd;
+}
+
+/* Стили для кнопки "Очистить все" в темной теме */
+[data-bs-theme="dark"] .text-danger {
+  color: #ff6b6b !important;
+}
+
+[data-bs-theme="dark"] .text-danger:hover {
+  color: #ff5252 !important;
+}
+
+/* Адаптивность */
+@media (max-width: 576px) {
+  .header .btn-outline-primary span {
+    display: none;
+  }
+} 

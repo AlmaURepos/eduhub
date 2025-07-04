@@ -262,47 +262,7 @@ const Profile = () => {
         </div>
       </div>
 
-      {/* Быстрые действия */}
-      <div className="row mt-4">
-        <div className="col-12">
-          <div className="card border-0 shadow-sm">
-            <div className="card-header bg-light border-0">
-              <h6 className="mb-0 fw-bold">
-                <i className="bi bi-lightning me-2"></i>
-                Быстрые действия
-              </h6>
-            </div>
-            <div className="card-body">
-              <div className="row g-3">
-                <div className="col-md-3 col-6">
-                  <button className="btn btn-outline-primary w-100">
-                    <i className="bi bi-calendar-event d-block fs-4 mb-1"></i>
-                    <small>Расписание</small>
-                  </button>
-                </div>
-                <div className="col-md-3 col-6">
-                  <button className="btn btn-outline-success w-100">
-                    <i className="bi bi-graph-up d-block fs-4 mb-1"></i>
-                    <small>Оценки</small>
-                  </button>
-                </div>
-                <div className="col-md-3 col-6">
-                  <button className="btn btn-outline-info w-100">
-                    <i className="bi bi-calendar-event d-block fs-4 mb-1"></i>
-                    <small>События</small>
-                  </button>
-                </div>
-                <div className="col-md-3 col-6">
-                  <button className="btn btn-outline-warning w-100">
-                    <i className="bi bi-calculator d-block fs-4 mb-1"></i>
-                    <small>GPA</small>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 };

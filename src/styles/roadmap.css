@@ -1,0 +1,111 @@
+/* Стили для roadmap карточек */
+.roadmap-card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.roadmap-card:hover {
+  transform: translateY(-2px);
+}
+
+.topic-item {
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+}
+
+.topic-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.topic-item.completed {
+  background-color: rgba(25, 135, 84, 0.1) !important;
+  border-color: #198754 !important;
+}
+
+.topics-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.topics-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.topics-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.topics-list::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.topics-list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Анимация для прогресс-бара */
+.progress-bar {
+  transition: width 0.3s ease-in-out;
+}
+
+/* Стили для выполненных тем */
+.topic-item.bg-success {
+  position: relative;
+}
+
+.topic-item.bg-success::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #198754;
+  border-radius: 2px;
+}
+
+/* Анимация для иконки галочки */
+.bi-check-circle-fill {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Стили для карточек предварительного просмотра */
+.roadmap-card-preview {
+  transition: all 0.3s ease-in-out;
+}
+
+.roadmap-card-preview:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.roadmap-card-preview .bi-arrow-right-circle {
+  transition: transform 0.3s ease-in-out;
+}
+
+.roadmap-card-preview:hover .bi-arrow-right-circle {
+  transform: translateX(5px);
+}
+
+/* Стили для модального окна */
+.modal-xl {
+  max-width: 90%;
+}
+
+.modal-body {
+  max-height: 80vh;
+  overflow-y: auto;
+} 

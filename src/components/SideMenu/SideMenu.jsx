@@ -65,13 +65,10 @@ const SideMenu = ({ isOpen, onClose }) => {
               <i className="bi bi-calendar-event me-3 fs-5 text-primary"></i>
               <span>События</span>
             </button>
-            <button className="list-group-item list-group-item-action py-3 d-flex align-items-center">
+            <button className="list-group-item list-group-item-action py-3 d-flex align-items-center"
+            onClick={() => handleNavigation('/syllabus')}>
               <i className="bi bi-journal-text me-3 fs-5 text-primary"></i>
               <span>Силлабус</span>
-            </button>
-            <button className="list-group-item list-group-item-action py-3 d-flex align-items-center">
-              <i className="bi bi-chat-dots me-3 fs-5 text-primary"></i>
-              <span>Связь с преподавателями</span>
             </button>
             <button
               className="list-group-item list-group-item-action py-3 d-flex align-items-center"

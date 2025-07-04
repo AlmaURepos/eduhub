@@ -1,0 +1,240 @@
+/* Стили для страницы силлабуса */
+
+/* Светлая тема */
+.syllabus-page {
+  background-color: #ffffff;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+/* Темная тема */
+[data-bs-theme="dark"] .syllabus-page {
+  background-color: #212529;
+  transition: background-color 0.3s ease;
+}
+
+/* Стили для roadmap */
+.syllabus-roadmap {
+  padding: 1rem;
+}
+
+.roadmap-container {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.roadmap-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #0d6efd, #0b5ed6);
+  transform: translateX(-50%);
+}
+
+.roadmap-item {
+  position: relative;
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.roadmap-item:nth-child(odd) {
+  flex-direction: row;
+}
+
+.roadmap-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.roadmap-content {
+  width: 45%;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+}
+
+.roadmap-content:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.roadmap-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background: #0d6efd;
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+}
+
+/* Темная тема для roadmap */
+[data-bs-theme="dark"] .roadmap-content {
+  background: #343a40;
+  border-color: #495057;
+  color: #ffffff;
+}
+
+[data-bs-theme="dark"] .roadmap-dot {
+  background: #0d6efd;
+  border-color: #343a40;
+}
+
+/* Стили для модулей */
+.module-card {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.module-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.module-header {
+  display: flex;
+  justify-content: between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.module-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0d6efd;
+  margin: 0;
+}
+
+.module-duration {
+  background: #e9ecef;
+  color: #6c757d;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+}
+
+.module-topics {
+  margin: 1rem 0;
+}
+
+.topic-item {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 0.5rem;
+}
+
+.topic-item i {
+  color: #0d6efd;
+  margin-right: 0.5rem;
+}
+
+.module-assignments {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.assignment-item {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background: #fff3cd;
+  border-radius: 0.5rem;
+  border-left: 4px solid #ffc107;
+}
+
+.assignment-item i {
+  color: #856404;
+  margin-right: 0.5rem;
+}
+
+/* Темная тема для модулей */
+[data-bs-theme="dark"] .module-card {
+  background: #343a40;
+  border-color: #495057;
+  color: #ffffff;
+}
+
+[data-bs-theme="dark"] .module-duration {
+  background: #495057;
+  color: #adb5bd;
+}
+
+[data-bs-theme="dark"] .topic-item {
+  background: #495057;
+  color: #adb5bd;
+}
+
+[data-bs-theme="dark"] .assignment-item {
+  background: #3d2c1a;
+  border-left-color: #ffc107;
+  color: #ffc107;
+}
+
+[data-bs-theme="dark"] .assignment-item i {
+  color: #ffc107;
+}
+
+/* Прогресс бар */
+.progress-container {
+  margin: 1rem 0;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.progress-bar-custom {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0d6efd, #0b5ed6);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .roadmap-line {
+    left: 2rem;
+  }
+  
+  .roadmap-item {
+    flex-direction: row !important;
+    margin-left: 4rem;
+  }
+  
+  .roadmap-content {
+    width: 100%;
+  }
+  
+  .roadmap-dot {
+    left: -2rem;
+  }
+} 
