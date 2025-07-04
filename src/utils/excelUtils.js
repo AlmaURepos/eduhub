@@ -13,8 +13,8 @@ export async function downloadAndParseExcel(source, isUrlDownload, setProgressCa
       if (setProgressCallback) setProgressCallback(20);
       const fileResponse = await fetch(source);
       const contentType = fileResponse.headers.get('content-type');
-      if (!contentType || (!contentType.includes('excel') && !contentType.includes('csv') && !contentType.includes('text/plain'))) {
-        throw new Error('Файл не является .csv, .xlsx или .xls');
+      if (!contentType || (!contentType.includes('excel') && !contentType.includes('text/plain'))) {
+        throw new Error('Файл не является .xlsx');
       }
 
       if (setProgressCallback) setProgressCallback(50);

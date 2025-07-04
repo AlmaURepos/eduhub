@@ -230,7 +230,7 @@ const Schedule = () => {
             </div>
             <div className="card-body">
               <p className="text-muted small mb-3">
-                Загрузите файл Excel или CSV с вашим расписанием
+                Загрузите файл Excel с вашим расписанием
               </p>
               {status && (
                 <div className="alert alert-info mb-3">
